@@ -1,0 +1,92 @@
+[
+  {
+    "test_id": "QA-PAY-01",
+    "test_name": "Unsuccessful / Failed Payment Verification",
+    "status": "PASS",
+    "balance_before": 1000.0,
+    "balance_after": 1000.0,
+    "details": "Unpaid order 'order_FAILED_2087e032' was rejected. Wallet balance unchanged.",
+    "timestamp": "2026-11-19T07:43:56Z"
+  },
+  {
+    "test_id": "QA-PAY-02",
+    "test_name": "Pending Payment Verification",
+    "status": "PASS",
+    "balance_before": 1000.0,
+    "balance_after": 1000.0,
+    "details": "Pending order 'order_PENDING_3fdd592f' rejected; credit was withheld.",
+    "timestamp": "2026-11-19T07:43:56Z"
+  },
+  {
+    "test_id": "QA-PAY-03",
+    "test_name": "Legitimate Captured Payment Crediting",
+    "status": "PASS",
+    "balance_before": 1000.0,
+    "balance_after": 1500.0,
+    "details": "Legitimate paid order 'order_PAID_12484d99' for \u20b9500.0 credited exactly once.",
+    "timestamp": "2026-11-19T07:43:56Z"
+  },
+  {
+    "test_id": "QA-PAY-04",
+    "test_name": "Payment Amount Tampering Validation",
+    "status": "PASS",
+    "balance_before": 1000.0,
+    "balance_after": 1000.0,
+    "details": "Order amount mismatch (expected \u20b91000, paid \u20b910) detected and rejected.",
+    "timestamp": "2026-11-19T07:43:56Z"
+  },
+  {
+    "test_id": "QA-PAY-05",
+    "test_name": "Sequential Duplicate Verification Idempotency",
+    "status": "PASS",
+    "balance_before": 1000.0,
+    "balance_after": 1200.0,
+    "details": "Repeated verification of order 'order_SEQ_59546ab0' was idempotent. Zero extra balance credited.",
+    "timestamp": "2026-11-19T07:43:56Z"
+  },
+  {
+    "test_id": "QA-PAY-06",
+    "test_name": "Concurrent Verification Race Condition",
+    "status": "PASS",
+    "balance_before": 1000.0,
+    "balance_after": 1500.0,
+    "details": "5 concurrent requests executed. Exactly 1 transaction committed; 4 rejected by database constraint.",
+    "timestamp": "2026-11-19T07:43:56Z"
+  },
+  {
+    "test_id": "QA-PAY-07",
+    "test_name": "Duplicate Razorpay Webhook Idempotency",
+    "status": "PASS",
+    "balance_before": 1000.0,
+    "balance_after": 1000.0,
+    "details": "Duplicate webhook delivery for 'event_42e00e57' acknowledged with 200 OK without re-crediting.",
+    "timestamp": "2026-11-19T07:43:56Z"
+  },
+  {
+    "test_id": "QA-PAY-08",
+    "test_name": "Invalid Webhook Signature Forgery Rejection",
+    "status": "PASS",
+    "balance_before": 1000.0,
+    "balance_after": 1000.0,
+    "details": "Forged signature failed constant-time HMAC check; request rejected with 401 Unauthorized.",
+    "timestamp": "2026-11-19T07:43:56Z"
+  },
+  {
+    "test_id": "QA-PAY-09",
+    "test_name": "Refunded Transaction Ledger Reconciliation",
+    "status": "PASS",
+    "balance_before": 1000.0,
+    "balance_after": 700.0,
+    "details": "Refund for \u20b9300.0 deducted from wallet balance; ledger debit entry recorded.",
+    "timestamp": "2026-11-19T07:43:56Z"
+  },
+  {
+    "test_id": "QA-PAY-10",
+    "test_name": "Cross-User Transaction Ownership Isolation",
+    "status": "PASS",
+    "balance_before": 1000.0,
+    "balance_after": 1000.0,
+    "details": "User A attempted verification of User B's order 'order_USER_B_bfa2d14d'. Rejected with 403 Forbidden.",
+    "timestamp": "2026-11-19T07:43:56Z"
+  }
+]
