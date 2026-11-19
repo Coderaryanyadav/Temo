@@ -1,0 +1,1 @@
+{"for": "fashion", "component_data": [{"bloc_id": "global_app_data", "amplitude_compact_properties_enabled": true, "amplitude_noise_filter_enabled": true, "tryon_collection_disabled": true, "tryon_v3_enabled": false, "facebook_events": ["view_item", "add_to_wishlist", "login", "INITIATE_PURCHASE"], "blocked_branch_events": ["view_items"], "gift_card_coupons_enabled": false}]}

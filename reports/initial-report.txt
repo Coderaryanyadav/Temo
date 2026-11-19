@@ -1,0 +1,16 @@
+KNOT SECURITY ASSESSMENT
+Date: Thu Nov 19 12:23:45 IST 2026
+Target: https://knotnow.co
+
+
+Files generated:
+/Users/aryan/KNOT-Security/reports/tls-certificate.txt
+/Users/aryan/KNOT-Security/reports/security-header-summary.txt
+/Users/aryan/KNOT-Security/reports/http-headers.txt
+/Users/aryan/KNOT-Security/reports/initial-report.txt
+/Users/aryan/KNOT-Security/reports/dns-records.txt
+/Users/aryan/KNOT-Security/reports/sitemap.xml
+/Users/aryan/KNOT-Security/reports/robots.txt
+
+Initial passive checks completed.
+Findings require manual verification.

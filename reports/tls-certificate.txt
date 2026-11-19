@@ -1,0 +1,4 @@
+subject=CN=knotnow.co
+issuer=C=US, O=DigiCert Inc, OU=www.digicert.com, CN=GeoTrust TLS RSA CA G1
+notBefore=Jul 15 00:00:00 2026 GMT
+notAfter=Jan 15 23:59:59 2027 GMT

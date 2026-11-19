@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+    <base href="/" />
+
+    <meta charset="UTF-8" />
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+    <meta name="mitgo-verification" content="074e949b-c5f4-49b2-a93b-8d644a30f19a" />
+
+    <!-- Cross-platform localStorage bridge for Flutter Web and Next.js compatibility -->
+    <script src="local_storage_bridge.js"></script>
+
+    <meta name="title" content="KNOT" />
+    <meta
+      name="description"
+      content="Get fashion in 60-mins. Try before you buy. No waits or regrets, just fire fits!"
+    />
+    <meta name="site_name" content="KNOT" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "KNOT",
+        "alternateName": "KNOT",
+        "url": "https://knotnow.co/"
+      }
+    </script>
+    <meta property="og:site_name" content="KNOT" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://knotnow.co/" />
+    <meta property="og:title" content="KNOT" />
+    <meta
+      property="og:description"
+      content="Get fashion in 60-mins. Try before you buy. No waits or regrets, just fire fits!"
+    />
+    <meta
+      property="og:image"
+      content="https://ik.imagekit.io/slickapp/droplet/tr:dpr-2,f-webp:/app_images/1200X630.png?ik-t=9999999999&ik-s=2e4734befc0f9546f1095894dd7bf8f7b9e3e464"
+    />
+
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="KNOT" />
+    <link rel="apple-touch-icon" href="icons/Icon-192.webp" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://knotnow.co/" />
+    <meta property="twitter:title" content="KNOT" />
+    <meta
+      property="twitter:description"
+      content="Get fashion in 60-mins. Try before you buy. No waits or regrets, just fire fits!"
+    />
+    <meta
+      property="twitter:image"
+      content="https://ik.imagekit.io/slickapp/droplet/tr:dpr-2,f-webp:/app_images/1200X630.png?ik-t=9999999999&ik-s=2e4734befc0f9546f1095894dd7bf8f7b9e3e464"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <title>KNOT</title>
+    <link rel="preload" as="image" href="knot-logo.webp" />
+    <link rel="manifest" href="manifest.json" />
+
+    <meta
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      name="viewport"
+    />
+
+    <style>
+      /* Theme variables */
+      :root {
+        --dark-bg: #242424;
+        --dark-container-bg: #171717;
+        --light-bg: #f5f5f5;
+        --light-container-bg: #ffffff;
+      }
+
+      /* Dark theme (default) */
+      html,
+      body {
+        background-color: var(--dark-bg);
+        overscroll-behavior-y: contain;
+        height: 100%;
+        -webkit-tap-highlight-color: transparent;
+        /* Ensures body is at full height */
+        overflow: hidden;
+        /* Prevents unwanted scrolling */
+        margin: 0;
+      }
+
+      #flutter_container {
+        background-color: var(--dark-bg);
+      }
+
+      flt-glass-pane {
+        background-color: transparent !important;
+      }
+
+      /* Full-width media pinned to the very top of the page during the web
+         splash only. It's a direct child of <body> but removeWebSplashScreen()
+         fades and removes it when Flutter takes over, so it lives only while the
+         splash is up. Revealed only once the image has loaded (.has-top-banner) so
+         there is no black flash, and it stays hidden if the image fails to load.
+         pointer-events:none so it never blocks taps underneath. */
+      #top-video-banner {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: calc(100vw * 320 / 3430);
+        overflow: hidden;
+        z-index: 100001;
+        pointer-events: none;
+      }
+
+      body.has-top-banner #top-video-banner {
+        display: block;
+      }
+
+      #top-video-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      #webframe-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--dark-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9998;
+      }
+
+      #webframe-content {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        background: var(--dark-container-bg);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      /* Light theme */
+      .theme-light html,
+      .theme-light body {
+        background-color: var(--light-bg);
+      }
+
+      .theme-light #flutter_container {
+        background-color: var(--light-bg);
+      }
+
+      .theme-light #webframe-container {
+        background: var(--light-bg);
+      }
+
+      .theme-light #webframe-content {
+        background: var(--light-container-bg);
+      }
+
+      /* Desktop layout */
+      @media (min-width: 550px) and (min-aspect-ratio: 3/5) {
+        #webframe-content {
+          max-width: calc(min(100vw, max(270px, 1.07 * 100vh * (375 / 812))));
+        }
+      }
+
+      /* Mobile - full width */
+      @media (max-width: 549px), (max-aspect-ratio: 3/5) {
+        #webframe-container {
+          background: var(--dark-container-bg);
+        }
+
+        #webframe-content {
+          background: var(--dark-container-bg);
+          max-width: 100%;
+        }
+
+        .theme-light #webframe-container {
+          background: var(--light-container-bg);
+        }
+
+        .theme-light #webframe-content {
+          background: var(--light-container-bg);
+        }
+      }
+
+      #splash-screen {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        z-index: 9999;
+      }
+
+      #lottie-container {
+        width: 160px;
+        height: 170px;
+      }
+
+      /* Hide splash when Flutter is ready */
+      .hidden {
+        display: none;
+      }
+
+      #splash-screen .close-btn {
+        color: white;
+        margin-right: 8px;
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      #splash-screen .app-icon {
+        width: 32px;
+        height: 32px;
+        margin-right: 8px;
+      }
+
+      #splash-screen .text-block {
+        flex-grow: 1;
+      }
+
+      #splash-screen .title {
+        font-size: 12px;
+        line-height: 1.5;
+        font-weight: 500;
+      }
+
+      #splash-screen .subtitle {
+        font-size: 12px;
+        line-height: 1.5;
+        font-weight: 500;
+      }
+
+      #splash-screen .cta-button {
+        background: #6678ff;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+      /* qr code styling */
+      #qr-download-card {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        left: 60px;
+        width: 209px;
+        height: 299px;
+        background: transparent;
+        z-index: 99999;
+      }
+
+      #qr-download-card img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      #qr-android-link,
+      #qr-ios-link {
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        z-index: 2;
+      }
+
+      #qr-android-link {
+        bottom: 70px;
+        right: 70px;
+      }
+
+      #qr-ios-link {
+        bottom: 70px;
+        right: 40px;
+      }
+
+      /* Social links styling */
+      #social-links {
+        display: none;
+        position: fixed;
+        right: 60px;
+        bottom: 30px;
+        z-index: 99999;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+        margin-left: 12px;
+      }
+
+      .social-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 4px;
+      }
+
+      /* Show QR and social links on desktop when there's enough space */
+      @media (min-width: 550px) and (min-aspect-ratio: 3/5) {
+        @media (min-width: calc(270px + 510px)) {
+          #qr-download-card {
+            display: block;
+          }
+
+          #social-links {
+            display: flex;
+          }
+        }
+      }
+    </style>
+
+    <script>
+      // CAPI Automation script loading with retry mechanism
+      window.capiRetry = {
+        maxRetries: 3,
+        retryDelay: 2000,
+        retryCount: 0,
+        isLoading: false,
+        hasFailedCompletely: false,
+      };
+
+      // Function to attempt loading CAPI Automation script
+      window.loadCAPI = function () {
+        // If already loading or loaded, don't start again
+        if (window.capiRetry.isLoading || window.capiLoaded) {
+          return;
+        }
+
+        window.capiRetry.isLoading = true;
+        window.capiRetry.retryCount = 0;
+        window.capiRetry.hasFailedCompletely = false;
+
+        function attemptLoad() {
+          // Remove any existing scripts to avoid conflicts
+          const existingScripts = document.querySelectorAll(
+            'script[src*="capi-automation.s3.us-east-2.amazonaws.com"]'
+          );
+          existingScripts.forEach((script) => script.remove());
+
+          const script = document.createElement("script");
+          script.defer = true;
+          script.src =
+            "https://capi-automation.s3.us-east-2.amazonaws.com/public/client_js/capiParamBuilder/clientParamBuilder.bundle.js";
+
+          script.onload = function () {
+            window.capiLoaded = true;
+            window.capiRetry.isLoading = false;
+            console.log("CAPI Automation script loaded successfully");
+          };
+
+          script.onerror = function () {
+            console.error(
+              `CAPI Automation load attempt ${
+                window.capiRetry.retryCount + 1
+              } failed`
+            );
+            handleCAPIError();
+          };
+
+          document.head.appendChild(script);
+
+          function handleCAPIError() {
+            if (window.capiRetry.retryCount < window.capiRetry.maxRetries) {
+              window.capiRetry.retryCount++;
+              console.log(
+                `Retrying CAPI Automation load (${window.capiRetry.retryCount}/${window.capiRetry.maxRetries}) in ${window.capiRetry.retryDelay}ms`
+              );
+              setTimeout(attemptLoad, window.capiRetry.retryDelay);
+            } else {
+              console.error(
+                "Failed to load CAPI Automation after maximum retries"
+              );
+              window.capiRetry.isLoading = false;
+              window.capiRetry.hasFailedCompletely = true;
+            }
+          }
+
+          // Add a timeout check in case the script loads but callback isn't triggered
+          const timeoutCheck = setTimeout(function () {
+            if (!window.capiLoaded && window.capiRetry.isLoading) {
+              console.warn("CAPI Automation loading timed out");
+              handleCAPIError();
+            }
+          }, 10000); // 10 seconds timeout
+        }
+
+        // Start the load process
+        attemptLoad();
+      };
+
+      // Initialize CAPI Automation loading on page load
+      window.capiLoaded = false;
+      window.loadCAPI();
+    </script>
+
+    <script defer type="text/javascript">
+      // Amplitude API loading with retry mechanism
+      window.amplitudeRetry = {
+        maxRetries: 3,
+        retryDelay: 2000,
+        retryCount: 0,
+        isLoading: false,
+        hasFailedCompletely: false,
+      };
+
+      // Function to attempt loading Amplitude
+      window.loadAmplitude = function () {
+        // If already loading or loaded, don't start again
+        if (window.amplitudeRetry.isLoading || window.amplitudeLoaded) {
+          return;
+        }
+
+        window.amplitudeRetry.isLoading = true;
+        window.amplitudeRetry.retryCount = 0;
+        window.amplitudeRetry.hasFailedCompletely = false;
+
+        function attemptLoad() {
+          // Remove any existing scripts to avoid conflicts
+          const existingScripts = document.querySelectorAll(
+            'script[src*="sapi.knotnow.co/config3"]'
+          );
+          existingScripts.forEach((script) => script.remove());
+
+          // Load the new Amplitude script
+          !(function () {
+            "use strict";
+            !(function (e, t) {
+              var r = e.amplitude || { _q: [], _iq: {} };
+              if (r.invoked)
+                e.console &&
+                  console.error &&
+                  console.error("Amplitude snippet has been loaded.");
+              else {
+                var n = function (e, t) {
+                    e.prototype[t] = function () {
+                      return (
+                        this._q.push({
+                          name: t,
+                          args: Array.prototype.slice.call(arguments, 0),
+                        }),
+                        this
+                      );
+                    };
+                  },
+                  s = function (e, t, r) {
+                    return function (n) {
+                      e._q.push({
+                        name: t,
+                        args: Array.prototype.slice.call(r, 0),
+                        resolve: n,
+                      });
+                    };
+                  },
+                  o = function (e, t, r) {
+                    e._q.push({
+                      name: t,
+                      args: Array.prototype.slice.call(r, 0),
+                    });
+                  },
+                  i = function (e, t, r) {
+                    e[t] = function () {
+                      if (r)
+                        return {
+                          promise: new Promise(
+                            s(e, t, Array.prototype.slice.call(arguments))
+                          ),
+                        };
+                      o(e, t, Array.prototype.slice.call(arguments));
+                    };
+                  },
+                  a = function (e) {
+                    for (var t = 0; t < g.length; t++) i(e, g[t], !1);
+                    for (var r = 0; r < m.length; r++) i(e, m[r], !0);
+                  };
+                r.invoked = !0;
+                var c = t.createElement("script");
+                (c.type = "text/javascript"),
+                  (c.crossOrigin = "anonymous"),
+                  (c.async = !0),
+                  (c.src = "https://sapi.knotnow.co/config3"),
+                  (c.onload = function () {
+                    if (e.amplitude.runQueuedFunctions) {
+                      window.amplitudeLoaded = true;
+                      window.amplitudeRetry.isLoading = false;
+                      console.log("Amplitude API loaded successfully");
+                    } else {
+                      console.log("[Amplitude] Error: could not load SDK");
+                      handleAmplitudeError();
+                    }
+                  });
+                c.onerror = function () {
+                  console.error(
+                    `Amplitude load attempt ${
+                      window.amplitudeRetry.retryCount + 1
+                    } failed`
+                  );
+                  handleAmplitudeError();
+                };
+                var l = t.getElementsByTagName("script")[0];
+                l.parentNode.insertBefore(c, l);
+                for (
+                  var u = function () {
+                      return (this._q = []), this;
+                    },
+                    p = [
+                      "add",
+                      "append",
+                      "clearAll",
+                      "prepend",
+                      "set",
+                      "setOnce",
+                      "unset",
+                      "preInsert",
+                      "postInsert",
+                      "remove",
+                      "getUserProperties",
+                    ],
+                    d = 0;
+                  d < p.length;
+                  d++
+                )
+                  n(u, p[d]);
+                r.Identify = u;
+                for (
+                  var f = function () {
+                      return (this._q = []), this;
+                    },
+                    v = [
+                      "getEventProperties",
+                      "setProductId",
+                      "setQuantity",
+                      "setPrice",
+                      "setRevenue",
+                      "setRevenueType",
+                      "setEventProperties",
+                    ],
+                    y = 0;
+                  y < v.length;
+                  y++
+                )
+                  n(f, v[y]);
+                r.Revenue = f;
+                var g = [
+                    "getDeviceId",
+                    "setDeviceId",
+                    "getSessionId",
+                    "setSessionId",
+                    "getUserId",
+                    "setUserId",
+                    "setOptOut",
+                    "setTransport",
+                    "reset",
+                    "extendSession",
+                  ],
+                  m = [
+                    "init",
+                    "add",
+                    "remove",
+                    "track",
+                    "logEvent",
+                    "identify",
+                    "groupIdentify",
+                    "setGroup",
+                    "revenue",
+                    "flush",
+                  ];
+                a(r),
+                  (r.createInstance = function (e) {
+                    return (r._iq[e] = { _q: [] }), a(r._iq[e]), r._iq[e];
+                  }),
+                  (e.amplitude = r);
+              }
+            })(window, document);
+
+            function handleAmplitudeError() {
+              if (
+                window.amplitudeRetry.retryCount <
+                window.amplitudeRetry.maxRetries
+              ) {
+                window.amplitudeRetry.retryCount++;
+                console.log(
+                  `Retrying Amplitude load (${window.amplitudeRetry.retryCount}/${window.amplitudeRetry.maxRetries}) in ${window.amplitudeRetry.retryDelay}ms`
+                );
+                setTimeout(attemptLoad, window.amplitudeRetry.retryDelay);
+              } else {
+                console.error("Failed to load Amplitude after maximum retries");
+                window.amplitudeRetry.isLoading = false;
+                window.amplitudeRetry.hasFailedCompletely = true;
+              }
+            }
+
+            // Add a timeout check in case the script loads but callback isn't triggered
+            const timeoutCheck = setTimeout(function () {
+              if (!window.amplitudeLoaded && window.amplitudeRetry.isLoading) {
+                console.warn("Amplitude loading timed out");
+                handleAmplitudeError();
+              }
+            }, 10000); // 10 seconds timeout
+          })();
+        }
+
+        // Start the load process
+        attemptLoad();
+      };
+
+      // Initialize Amplitude loading on page load
+      window.amplitudeLoaded = false;
+      window.loadAmplitude();
+    </script>
+
+    <script defer>
+      // Branch API loading with retry mechanism
+      window.branchRetry = {
+        maxRetries: 3,
+        retryDelay: 2000,
+        retryCount: 0,
+        isLoading: false,
+        hasFailedCompletely: false,
+      };
+
+      // Function to attempt loading Branch
+      window.loadBranch = function () {
+        // If already loading or loaded, don't start again
+        if (window.branchRetry.isLoading || window.branchLoaded) {
+          return;
+        }
+
+        window.branchRetry.isLoading = true;
+        window.branchRetry.retryCount = 0;
+        window.branchRetry.hasFailedCompletely = false;
+
+        function attemptLoad() {
+          // Remove any existing scripts to avoid conflicts
+          const existingScripts = document.querySelectorAll(
+            'script[src*="sapi.knotnow.co/config2"]'
+          );
+          existingScripts.forEach((script) => script.remove());
+
+          // load Branch
+          (function (b, r, a, n, c, h, _, s, d, k) {
+            if (!b[n] || !b[n]._q) {
+              for (; s < _.length; ) c(h, _[s++]);
+              d = r.createElement(a);
+              d.async = 1;
+              d.src = "https://sapi.knotnow.co/config2";
+
+              d.onload = function () {
+                window.branchLoaded = true;
+                window.branchRetry.isLoading = false;
+                console.log("Branch API loaded successfully");
+              };
+
+              d.onerror = function () {
+                console.error(
+                  `Branch load attempt ${
+                    window.branchRetry.retryCount + 1
+                  } failed`
+                );
+                handleBranchError();
+              };
+
+              k = r.getElementsByTagName(a)[0];
+              k.parentNode.insertBefore(d, k);
+              b[n] = h;
+            }
+          })(
+            window,
+            document,
+            "script",
+            "branch",
+            function (b, r) {
+              b[r] = function () {
+                b._q.push([r, arguments]);
+              };
+            },
+            { _q: [], _v: 1 },
+            "addListener banner closeBanner closeJourney data deepview deepviewCta first init link logout removeListener setBranchViewData setIdentity track trackCommerceEvent logEvent disableTracking getBrowserFingerprintId crossPlatformIds lastAttributedTouchData setAPIResponseCallback qrCode setRequestMetaData setAPIUrl getAPIUrl setDMAParamsForEEA".split(
+              " "
+            ),
+            0
+          );
+
+          function handleBranchError() {
+            if (window.branchRetry.retryCount < window.branchRetry.maxRetries) {
+              window.branchRetry.retryCount++;
+              console.log(
+                `Retrying Branch load (${window.branchRetry.retryCount}/${window.branchRetry.maxRetries}) in ${window.branchRetry.retryDelay}ms`
+              );
+              setTimeout(attemptLoad, window.branchRetry.retryDelay);
+            } else {
+              console.error("Failed to load Branch after maximum retries");
+              window.branchRetry.isLoading = false;
+              window.branchRetry.hasFailedCompletely = true;
+            }
+          }
+
+          // Add a timeout check in case the script loads but callback isn't triggered
+          const timeoutCheck = setTimeout(function () {
+            if (!window.branchLoaded && window.branchRetry.isLoading) {
+              console.warn("Branch loading timed out");
+              handleBranchError();
+            }
+          }, 10000); // 10 seconds timeout
+        }
+
+        // Start the load process
+        attemptLoad();
+      };
+
+      // Initialize Branch loading on page load
+      window.branchLoaded = false;
+      window.loadBranch();
+    </script>
+
+    <!-- Google Tag Manager with retry mechanism -->
+    <script>
+      // GTM API loading with retry mechanism
+      window.gtmRetry = {
+        maxRetries: 3,
+        retryDelay: 2000,
+        retryCount: 0,
+        isLoading: false,
+        hasFailedCompletely: false,
+      };
+
+      // Function to attempt loading GTM
+      window.loadGTM = function () {
+        // If already loading or loaded, don't start again
+        if (window.gtmRetry.isLoading || window.gtmLoaded) {
+          return;
+        }
+
+        window.gtmRetry.isLoading = true;
+        window.gtmRetry.retryCount = 0;
+        window.gtmRetry.hasFailedCompletely = false;
+
+        function attemptLoad() {
+          // Remove any existing scripts to avoid conflicts
+          const existingScripts = document.querySelectorAll(
+            'script[src*="googletagmanager.com/gtm.js"]'
+          );
+          existingScripts.forEach((script) => script.remove());
+
+          (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s),
+              dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+
+            j.onload = function () {
+              window.gtmLoaded = true;
+              window.gtmRetry.isLoading = false;
+              console.log("Google Tag Manager loaded successfully");
+            };
+
+            j.onerror = function () {
+              console.error(
+                `GTM load attempt ${window.gtmRetry.retryCount + 1} failed`
+              );
+              handleGTMError();
+            };
+
+            f.parentNode.insertBefore(j, f);
+          })(window, document, "script", "dataLayer", "GTM-KQ8QNNBK");
+
+          function handleGTMError() {
+            if (window.gtmRetry.retryCount < window.gtmRetry.maxRetries) {
+              window.gtmRetry.retryCount++;
+              console.log(
+                `Retrying GTM load (${window.gtmRetry.retryCount}/${window.gtmRetry.maxRetries}) in ${window.gtmRetry.retryDelay}ms`
+              );
+              setTimeout(attemptLoad, window.gtmRetry.retryDelay);
+            } else {
+              console.error("Failed to load GTM after maximum retries");
+              window.gtmRetry.isLoading = false;
+              window.gtmRetry.hasFailedCompletely = true;
+            }
+          }
+
+          // Add a timeout check in case the script loads but callback isn't triggered
+          const timeoutCheck = setTimeout(function () {
+            if (!window.gtmLoaded && window.gtmRetry.isLoading) {
+              console.warn("GTM loading timed out");
+              handleGTMError();
+            }
+          }, 10000); // 10 seconds timeout
+        }
+
+        // Start the load process
+        attemptLoad();
+      };
+
+      // Initialize GTM loading on page load
+      window.gtmLoaded = false;
+      window.loadGTM();
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <script>
+      function isIOS() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      }
+
+      if (isIOS()) {
+        document.addEventListener(
+          "touchstart",
+          (startEvent) => {
+            if (startEvent.touches.length !== 1 || startEvent.changedTouches.length !== 1) return;
+
+            const target = startEvent.composedPath()[0];
+            if (target instanceof Element &&
+                (target.closest("input, textarea, select") || target.isContentEditable)) return;
+
+            // Keep Safari's duplicate back-swipe workaround without blocking input taps.
+            if (startEvent.touches[0].clientX < 20) startEvent.preventDefault();
+          },
+          { passive: false }
+        );
+      }
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const os = getMobileOperatingSystem();
+        const ctaButton = document.getElementById("cta-button");
+
+        const handleCTA = (e) => {
+          if (!ctaButton?.href || ctaButton.href === "#") {
+            e.preventDefault();
+            return;
+          }
+
+          // Only override default behavior on iOS
+          if (os === "iOS") {
+            e.preventDefault();
+            window.location.href = ctaButton.href;
+          }
+
+          // For Android: let the browser open target="_blank" normally
+        };
+
+        if (os === "iOS") {
+          ctaButton?.addEventListener("click", handleCTA, { passive: false });
+          ctaButton?.addEventListener("touchstart", handleCTA, {
+            passive: false,
+          });
+        }
+
+        setTimeout(showGetApp, 3000);
+      });
+
+      function getMobileOperatingSystem() {
+        const userAgent =
+          navigator.userAgent || navigator.vendor || window.opera;
+        if (/windows phone/i.test(userAgent)) return "Windows Phone";
+        if (/android/i.test(userAgent)) return "Android";
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream)
+          return "iOS";
+        return "unknown";
+      }
+
+      function shouldShowSideElements() {
+        const screenWidth =
+          window.innerWidth || document.documentElement.clientWidth;
+        const screenHeight =
+          window.innerHeight || document.documentElement.clientHeight;
+        const isMobile = screenWidth < 550 || screenWidth / screenHeight < 0.6;
+
+        if (isMobile) return false;
+
+        const webFrameWidth = Math.min(
+          screenWidth,
+          Math.max(270, 1.07 * screenHeight * (375 / 812))
+        );
+        return screenWidth > webFrameWidth + 510;
+      }
+
+      function showGetApp() {
+        const qrCard = document.getElementById("qr-download-card");
+        const socialLinks = document.getElementById("social-links");
+
+        if (shouldShowSideElements()) {
+          if (qrCard) qrCard.style.display = "block";
+          if (socialLinks) socialLinks.style.display = "flex";
+        }
+
+        setTimeout(() => {
+          const ctaButton = document.getElementById("cta-button");
+          if (!ctaButton) return;
+
+          if (os === "Android") {
+            ctaButton.href =
+              "https://play.google.com/store/apps/details?id=com.fashion.knot";
+          } else if (os === "iOS") {
+            ctaButton.href =
+              "https://apps.apple.com/in/app/knot-instant-iconic-yours/id6741852456";
+          } else {
+            ctaButton.remove();
+          }
+        }, 500);
+      }
+    </script>
+
+    <script>
+      function removeWebSplashScreen() {
+        const splashScreen = document.getElementById("splash-screen");
+        const webframeContainer = document.getElementById("webframe-container");
+        const qrCard = document.getElementById("qr-download-card");
+        const socialLinks = document.getElementById("social-links");
+        const topVideoBanner = document.getElementById("top-video-banner");
+
+        if (!splashScreen) return;
+
+        if (window.webSplashAnimation) {
+          window.webSplashAnimation.destroy();
+          window.webSplashAnimation = null;
+        }
+
+        splashScreen.style.transition = "opacity 0.4s ease-out";
+        splashScreen.style.opacity = "0";
+        // The top video banner lives only during the splash: fade it out with
+        // the splash and remove it once Flutter has taken over.
+        if (topVideoBanner) {
+          topVideoBanner.style.transition = "opacity 0.4s ease-out";
+          topVideoBanner.style.opacity = "0";
+        }
+        setTimeout(() => {
+          splashScreen.remove();
+          if (webframeContainer) webframeContainer.remove();
+          if (qrCard) qrCard.remove();
+          if (socialLinks) socialLinks.remove();
+          if (topVideoBanner) topVideoBanner.remove();
+          document.body.classList.remove("has-top-banner");
+        }, 400);
+      }
+    </script>
+
+    <script>
+      // Theme detection and application
+      function getThemePreference() {
+        // Check for theme-preference cookie
+        const cookies = document.cookie.split(";");
+        for (let cookie of cookies) {
+          const [name, value] = cookie.trim().split("=");
+          if (name === "theme-preference") {
+            return value;
+          }
+        }
+
+        // If no cookie, check system preference
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: light)").matches
+        ) {
+          return "light";
+        } else if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+          return "dark";
+        }
+
+        // Default to dark if no preference detected
+        return "dark";
+      }
+
+      function applyTheme() {
+        const theme = getThemePreference();
+        const html = document.documentElement;
+
+        // Remove existing theme classes
+        html.classList.remove("theme-light", "theme-dark");
+
+        // Add appropriate theme class
+        if (theme === "light") {
+          html.classList.add("theme-light");
+        } else {
+          html.classList.add("theme-dark");
+        }
+      }
+
+      // Apply theme immediately when script loads
+      applyTheme();
+
+      // Listen for system theme changes
+      if (window.matchMedia) {
+        window
+          .matchMedia("(prefers-color-scheme: light)")
+          .addEventListener("change", function (e) {
+            // Only apply system theme if no cookie is set
+            const cookies = document.cookie.split(";");
+            let hasThemeCookie = false;
+            for (let cookie of cookies) {
+              const [name] = cookie.trim().split("=");
+              if (name === "theme-preference") {
+                hasThemeCookie = true;
+                break;
+              }
+            }
+
+            if (!hasThemeCookie) {
+              applyTheme();
+            }
+          });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize Lottie animation
+        const lottieContainer = document.getElementById("lottie-container");
+        if (lottieContainer && typeof lottie !== "undefined") {
+          window.webSplashAnimation = lottie.loadAnimation({
+            container: lottieContainer,
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: "./loader_purple.json", // Replace with your Lottie file path
+          });
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+    <!-- Full-width media pinned to the top of the page during the web splash
+         only; removeWebSplashScreen() removes it when Flutter takes over.
+         Styles under #top-video-banner.
+         MOCK URL mirrors lib/main.dart's top_media_web_banner. -->
+    <!-- Top GIF banner temporarily disabled.
+    <div id="top-video-banner">
+      <img
+        id="top-video-banner-el"
+        src=https://ik.imagekit.io/slickapp/droplet/app_images%2Fuploads%2F600%20OFF%2060%20mins%20fashion%20delivery%20%281%29.gif?ik-s=1c57cd74b2930938cb0638b356fabed9f4b1ac0a"
+        alt=""
+      />
+    </div>
+    <script>
+      (function () {
+        var media = document.getElementById("top-video-banner-el");
+        if (!media) return;
+
+        // Match the Flutter banner: mobile web only.
+        var ua = navigator.userAgent || navigator.vendor || window.opera || "";
+        var isMobile =
+          /android/i.test(ua) ||
+          (/iPad|iPhone|iPod/.test(ua) && !window.MSStream);
+        if (!isMobile) return;
+
+        // Only show to logged-out users (mirrors Helper.getLoggedInUserId()).
+        // Flutter stores the logged-in user's id at this localStorage key and
+        // clears it on logout; absent => logged out.
+        var lastKnownUserId = localStorage.getItem("flutter.__last_known_user_id");
+        if (lastKnownUserId && lastKnownUserId !== "null") return;
+
+        function reveal() {
+          document.body.classList.add("has-top-banner");
+        }
+
+        // Reveal only once the image has actually loaded (no black flash);
+        // handle the case where it's already cached and "load" already fired.
+        if (media.complete && media.naturalWidth > 0) {
+          reveal();
+        } else {
+          media.addEventListener("load", reveal);
+        }
+        media.addEventListener("error", function () {
+          document.body.classList.remove("has-top-banner");
+        });
+      })();
+    </script>
+    -->
+
+    <!-- Splash screen -->
+    <div id="webframe-container">
+      <div id="webframe-content">
+        <!-- Minimal splash screen inside webframe -->
+        <div id="splash-screen">
+          <div id="lottie-container"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QR Download Card (Desktop Only) -->
+    <div id="qr-download-card">
+      <img src="slick_qr.png" alt="Download KNOT QR" />
+      <!-- Invisible clickable hotspots for Android & iOS -->
+      <a
+        id="qr-android-link"
+        href="https://play.google.com/store/apps/details?id=com.fashion.knot"
+        target="_blank"
+      ></a>
+
+      <a
+        id="qr-ios-link"
+        href="https://apps.apple.com/in/app/knot-instant-iconic-yours/id6741852456"
+        target="_blank"
+      ></a>
+    </div>
+
+    <!-- Social Links (Desktop Only) -->
+    <div id="social-links">
+      <a
+        href="https://www.instagram.com/knotnow.co"
+        class="social-link"
+        target="_blank"
+      >
+        <svg
+          class="social-icon"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="ri:instagram-fill">
+            <path
+              id="Vector"
+              d="M13.028 2C14.153 2.003 14.724 2.009 15.217 2.023L15.411 2.03C15.635 2.038 15.856 2.048 16.123 2.06C17.187 2.11 17.913 2.278 18.55 2.525C19.21 2.779 19.766 3.123 20.322 3.678C20.8307 4.17773 21.2242 4.78247 21.475 5.45C21.722 6.087 21.89 6.813 21.94 7.878C21.952 8.144 21.962 8.365 21.97 8.59L21.976 8.784C21.991 9.276 21.997 9.847 21.999 10.972L22 11.718V13.028C22.0025 13.7574 21.9948 14.4868 21.977 15.216L21.971 15.41C21.963 15.635 21.953 15.856 21.941 16.122C21.891 17.187 21.721 17.912 21.475 18.55C21.2242 19.2175 20.8307 19.8223 20.322 20.322C19.8223 20.8307 19.2175 21.2242 18.55 21.475C17.913 21.722 17.187 21.89 16.123 21.94L15.411 21.97L15.217 21.976C14.724 21.99 14.153 21.997 13.028 21.999L12.282 22H10.973C10.2433 22.0026 9.51354 21.9949 8.78402 21.977L8.59002 21.971C8.35263 21.962 8.11529 21.9517 7.87802 21.94C6.81402 21.89 6.08802 21.722 5.45002 21.475C4.78285 21.2241 4.17846 20.8306 3.67902 20.322C3.16996 19.8224 2.77613 19.2176 2.52502 18.55C2.27802 17.913 2.11002 17.187 2.06002 16.122L2.03002 15.41L2.02502 15.216C2.00659 14.4868 1.99825 13.7574 2.00002 13.028V10.972C1.99725 10.2426 2.00459 9.5132 2.02202 8.784L2.02902 8.59C2.03702 8.365 2.04702 8.144 2.05902 7.878C2.10902 6.813 2.27702 6.088 2.52402 5.45C2.77571 4.7822 3.17024 4.17744 3.68002 3.678C4.17917 3.16955 4.78321 2.77607 5.45002 2.525C6.08802 2.278 6.81302 2.11 7.87802 2.06C8.14402 2.048 8.36602 2.038 8.59002 2.03L8.78402 2.024C9.51321 2.00623 10.2426 1.99857 10.972 2.001L13.028 2ZM12 7C10.6739 7 9.40217 7.52678 8.46449 8.46447C7.5268 9.40215 7.00002 10.6739 7.00002 12C7.00002 13.3261 7.5268 14.5979 8.46449 15.5355C9.40217 16.4732 10.6739 17 12 17C13.3261 17 14.5979 16.4732 15.5356 15.5355C16.4732 14.5979 17 13.3261 17 12C17 10.6739 16.4732 9.40215 15.5356 8.46447C14.5979 7.52678 13.3261 7 12 7ZM12 9C12.394 8.99993 12.7841 9.07747 13.1481 9.22817C13.5121 9.37887 13.8429 9.5998 14.1215 9.87833C14.4001 10.1569 14.6211 10.4875 14.772 10.8515C14.9228 11.2154 15.0005 11.6055 15.0005 11.9995C15.0006 12.3935 14.9231 12.7836 14.7723 13.1476C14.6216 13.5116 14.4007 13.8423 14.1222 14.121C13.8437 14.3996 13.513 14.6206 13.149 14.7714C12.7851 14.9223 12.395 14.9999 12.001 15C11.2054 15 10.4423 14.6839 9.8797 14.1213C9.31709 13.5587 9.00102 12.7956 9.00102 12C9.00102 11.2044 9.31709 10.4413 9.8797 9.87868C10.4423 9.31607 11.2054 9 12.001 9M17.251 5.5C16.9195 5.5 16.6016 5.6317 16.3671 5.86612C16.1327 6.10054 16.001 6.41848 16.001 6.75C16.001 7.08152 16.1327 7.39946 16.3671 7.63388C16.6016 7.8683 16.9195 8 17.251 8C17.5825 8 17.9005 7.8683 18.1349 7.63388C18.3693 7.39946 18.501 7.08152 18.501 6.75C18.501 6.41848 18.3693 6.10054 18.1349 5.86612C17.9005 5.6317 17.5825 5.5 17.251 5.5Z"
+              fill="#6678FF"
+            />
+          </g>
+        </svg>
+        Instagram
+      </a>
+    </div>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KQ8QNNBK"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Add this script to your index.html -->
+    <!-- Add this script to your index.html -->
+    <script>
+      // Google Maps API loading with retry mechanism
+      window.googleMapsRetry = {
+        maxRetries: 3,
+        retryDelay: 2000,
+        retryCount: 0,
+        isLoading: false,
+        hasFailedCompletely: false,
+      };
+
+      // Define callback for when Maps successfully loads
+      window.initGoogleMaps = function () {
+        window.mapsLoaded = true;
+        window.googleMapsRetry.isLoading = false;
+        console.log("Google Maps API loaded successfully");
+
+        // Notify Flutter that maps loaded successfully
+        if (window.flutterMapLoadSuccessCallback) {
+          window.flutterMapLoadSuccessCallback();
+        }
+      };
+
+      // Function to attempt loading Google Maps
+      window.loadGoogleMaps = function () {
+        // If already loading or loaded, don't start again
+        if (window.googleMapsRetry.isLoading || window.mapsLoaded) {
+          return;
+        }
+
+        window.googleMapsRetry.isLoading = true;
+        window.googleMapsRetry.retryCount = 0;
+        window.googleMapsRetry.hasFailedCompletely = false;
+
+        function attemptLoad() {
+          // Remove any existing scripts to avoid conflicts
+          const existingScripts = document.querySelectorAll(
+            'script[src*="maps.googleapis.com"]'
+          );
+          existingScripts.forEach((script) => script.remove());
+
+          const script = document.createElement("script");
+
+          script.src =
+            "https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ07-q6LlECi0EzCxRzqrBIWhtTDi7XvQ&libraries=drawing,visualization,places&callback=initGoogleMaps";
+
+          script.async = true;
+          script.defer = true;
+
+          script.onerror = function () {
+            console.error(
+              `Google Maps load attempt ${
+                window.googleMapsRetry.retryCount + 1
+              } failed`
+            );
+
+            if (
+              window.googleMapsRetry.retryCount <
+              window.googleMapsRetry.maxRetries
+            ) {
+              window.googleMapsRetry.retryCount++;
+              console.log(
+                `Retrying Google Maps load (${window.googleMapsRetry.retryCount}/${window.googleMapsRetry.maxRetries}) in ${window.googleMapsRetry.retryDelay}ms`
+              );
+              setTimeout(attemptLoad, window.googleMapsRetry.retryDelay);
+            } else {
+              console.error("Failed to load Google Maps after maximum retries");
+              window.googleMapsRetry.isLoading = false;
+              window.googleMapsRetry.hasFailedCompletely = true;
+
+              // Notify Flutter that maps failed to load
+              if (window.flutterMapLoadErrorCallback) {
+                window.flutterMapLoadErrorCallback();
+              }
+            }
+          };
+
+          // Add a timeout check in case the script loads but callback isn't triggered
+          const timeoutCheck = setTimeout(function () {
+            if (!window.mapsLoaded && window.googleMapsRetry.isLoading) {
+              console.warn("Google Maps loading timed out");
+              script.onerror();
+            }
+          }, 10000); // 10 seconds timeout
+
+          document.head.appendChild(script);
+        }
+
+        // Start the load process
+        attemptLoad();
+      };
+
+      // Defer Google Maps API loading until the location page actually
+      // needs it. Flutter calls window.loadGoogleMaps() lazily via
+      // MapWebRetryHandler when the map widget mounts. This keeps the
+      // initial bundle lighter and avoids fetching ~hundreds of KB of
+      // Maps JS on pages that never display a map.
+      window.mapsLoaded = false;
+    </script>
+    <script defer type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBvg22wpqiDo5zjhEIN-i6vJAnrV2Rx-O4",
+        authDomain: "bptpl-8735e.firebaseapp.com",
+        projectId: "bptpl-8735e",
+        storageBucket: "bptpl-8735e.firebasestorage.app",
+        messagingSenderId: "238420553806",
+        appId: "1:238420553806:web:dac24070ed4e401b2f931f",
+        measurementId: "G-61333GWJVE",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script>
+      // Keyboard detection for Android Instagram in-app browser.
+      // That WebView uses adjustNothing: the keyboard overlays content and
+      // nothing in the viewport APIs changes, so Flutter's viewInsets stays 0.
+      // We detect focus on Flutter's hidden <input> elements instead and
+      // dispatch a custom event that the Dart widgets listen to.
+      (function () {
+        var ua = navigator.userAgent;
+        if (!/Instagram/i.test(ua) || !/Android/i.test(ua)) return;
+
+        var _blurTimer = null;
+
+        function _isInput(el) {
+          return el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA');
+        }
+
+        function _dispatch(height) {
+          window.dispatchEvent(
+            new CustomEvent('ig_keyboard_height', { detail: height })
+          );
+        }
+
+        document.addEventListener('focusin', function (e) {
+          if (!_isInput(e.target)) return;
+          if (_blurTimer) { clearTimeout(_blurTimer); _blurTimer = null; }
+          // Estimate: Android keyboards are typically ~42% of viewport height
+          _dispatch(Math.floor(window.innerHeight * 0.42));
+        });
+
+        document.addEventListener('focusout', function (e) {
+          if (!_isInput(e.target)) return;
+          if (_blurTimer) clearTimeout(_blurTimer);
+          // Wait 300ms — Flutter briefly cycles its internal input element,
+          // which causes spurious blur events. Only close if no input is
+          // active after the debounce.
+          _blurTimer = setTimeout(function () {
+            _blurTimer = null;
+            if (!_isInput(document.activeElement)) _dispatch(0);
+          }, 300);
+        });
+      })();
+    </script>
+
+    <script defer src="flutter_bootstrap.js" async></script>
+
+    <!-- <script>
+    window.addEventListener('load', function () {
+      console.log("Flutter app is starting...");
+
+      // Wait for Flutter bootstrap to load
+      let checkFlutter = setInterval(() => {
+        if (window._flutter && window._flutter.loader && window._flutter.loader.didCreateEngineInitializer) {
+          console.log("Flutter initialized, hiding splash...");
+          clearInterval(checkFlutter);
+
+          // Fade out and remove splash screen
+          let splash = document.getElementById('splash-screen');
+          if (splash) {
+            splash.style.transition = 'opacity 0.5s';
+            splash.style.opacity = '0';
+            setTimeout(() => splash.remove(), 500);
+          }
+        }
+      }, 2000);
+    });
+  </script> -->
+
+    <script>
+      // Razorpay API loading with retry mechanism
+      window.razorpayRetry = {
+        maxRetries: 3,
+        retryDelay: 2000,
+        retryCount: 0,
+        isLoading: false,
+        hasFailedCompletely: false,
+      };
+
+      // Define callback for when Razorpay successfully loads
+      window.initRazorpay = function () {
+        window.razorpayLoaded = true;
+        window.razorpayRetry.isLoading = false;
+        console.log("Razorpay API loaded successfully");
+
+        // Notify Flutter that Razorpay loaded successfully
+        if (window.flutterRazorpayLoadSuccessCallback) {
+          window.flutterRazorpayLoadSuccessCallback();
+        }
+      };
+
+      // Function to attempt loading Razorpay
+      window.loadRazorpay = function () {
+        // If already loading or loaded, don't start again
+        if (window.razorpayRetry.isLoading || window.razorpayLoaded) {
+          return;
+        }
+
+        window.razorpayRetry.isLoading = true;
+        window.razorpayRetry.retryCount = 0;
+        window.razorpayRetry.hasFailedCompletely = false;
+
+        function attemptLoad() {
+          // Remove any existing scripts to avoid conflicts
+          const existingScripts = document.querySelectorAll(
+            'script[src*="checkout.razorpay.com"]'
+          );
+          existingScripts.forEach((script) => script.remove());
+
+          const script = document.createElement("script");
+          script.src = "https://checkout.razorpay.com/v1/checkout.js";
+          script.async = true;
+          script.defer = true;
+
+          script.onload = function () {
+            // Check if Razorpay is actually available
+            if (typeof Razorpay !== "undefined") {
+              window.razorpayLoaded = true;
+              window.razorpayRetry.isLoading = false;
+              console.log("Razorpay API loaded successfully");
+
+              // Notify Flutter that Razorpay loaded successfully
+              if (window.flutterRazorpayLoadSuccessCallback) {
+                window.flutterRazorpayLoadSuccessCallback();
+              }
+            } else {
+              // Razorpay script loaded but object not available
+              console.error(
+                "Razorpay script loaded but Razorpay object not available"
+              );
+              script.onerror();
+            }
+          };
+
+          script.onerror = function () {
+            console.error(
+              `Razorpay load attempt ${
+                window.razorpayRetry.retryCount + 1
+              } failed`
+            );
+
+            if (
+              window.razorpayRetry.retryCount < window.razorpayRetry.maxRetries
+            ) {
+              window.razorpayRetry.retryCount++;
+              console.log(
+                `Retrying Razorpay load (${window.razorpayRetry.retryCount}/${window.razorpayRetry.maxRetries}) in ${window.razorpayRetry.retryDelay}ms`
+              );
+              setTimeout(attemptLoad, window.razorpayRetry.retryDelay);
+            } else {
+              console.error("Failed to load Razorpay after maximum retries");
+              window.razorpayRetry.isLoading = false;
+              window.razorpayRetry.hasFailedCompletely = true;
+
+              // Notify Flutter that Razorpay failed to load
+              if (window.flutterRazorpayLoadErrorCallback) {
+                window.flutterRazorpayLoadErrorCallback();
+              }
+            }
+          };
+
+          // Add a timeout check in case the script loads but callback isn't triggered
+          const timeoutCheck = setTimeout(function () {
+            if (!window.razorpayLoaded && window.razorpayRetry.isLoading) {
+              console.warn("Razorpay loading timed out");
+              script.onerror();
+            }
+          }, 10000); // 10 seconds timeout
+
+          document.head.appendChild(script);
+        }
+
+        // Start the load process
+        attemptLoad();
+      };
+
+      // Initialize Razorpay loading on page load
+      window.razorpayLoaded = false;
+      window.loadRazorpay();
+    </script>
+
+    <script>
+      // Disable Ctrl + / Cmd + zoom
+      document.addEventListener("keydown", function (e) {
+        if (
+          (e.ctrlKey || e.metaKey) &&
+          (e.key === "+" || e.key === "-" || e.key === "=")
+        ) {
+          e.preventDefault();
+        }
+      });
+
+      // Optional: disable Ctrl/Cmd + MouseWheel zoom
+      window.addEventListener(
+        "wheel",
+        function (e) {
+          if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+
+      document.addEventListener("DOMContentLoaded", function () {
+        function isDesktop() {
+          const hasMouse = window.matchMedia("(pointer: fine)").matches;
+
+          const isLargeScreen = window.innerWidth >= 1024;
+
+          const hasTouch =
+            "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+          return hasMouse && isLargeScreen && !hasTouch;
+        }
+
+        if (!isDesktop()) {
+          return;
+        }
+
+        let isFlutterReady = false;
+        let flutterContainer = null;
+        let lastScrollTime = 0;
+        let scrollAccumulator = 0;
+        let isScrolling = false;
+
+        // Function to find the Flutter container
+        function findFlutterContainer() {
+          const selectors = [
+            "#flutter_container",
+            "flt-glass-pane",
+            "flt-scene-host",
+            "[data-flt-scene-host]",
+          ];
+
+          for (const selector of selectors) {
+            const element = document.querySelector(selector);
+            if (element) {
+              return element;
+            }
+          }
+
+          return document.querySelector(
+            "[data-flt-scene-host], flt-glass-pane, flt-scene-host"
+          );
+        }
+
+        function forwardScrollToFlutter(deltaY) {
+          if (!flutterContainer || !isFlutterReady) return;
+
+          scrollAccumulator += deltaY;
+
+          if (Math.abs(scrollAccumulator) < 5) return;
+
+          if (!isScrolling) {
+            isScrolling = true;
+            requestAnimationFrame(() => {
+              if (
+                isFlutterReady &&
+                flutterContainer &&
+                Math.abs(scrollAccumulator) > 0
+              ) {
+                const wheelEvent = new WheelEvent("wheel", {
+                  deltaY: scrollAccumulator,
+                  deltaX: 0,
+                  deltaZ: 0,
+                  deltaMode: 0,
+                  bubbles: true,
+                  cancelable: true,
+                  clientX: window.innerWidth / 2,
+                  clientY: window.innerHeight / 2,
+                  ctrlKey: false,
+                  shiftKey: false,
+                  altKey: false,
+                  metaKey: false,
+                });
+
+                flutterContainer.dispatchEvent(wheelEvent);
+                scrollAccumulator = 0;
+              }
+              isScrolling = false;
+            });
+          }
+        }
+
+        function checkFlutterReady() {
+          flutterContainer = findFlutterContainer();
+          if (flutterContainer) {
+            isFlutterReady = true;
+            console.log(
+              "Desktop scroll forwarding enabled for Flutter container"
+            );
+          } else {
+            setTimeout(checkFlutterReady, 1000);
+          }
+        }
+
+        // Start checking for Flutter container
+        checkFlutterReady();
+
+        function handleScroll(e) {
+          const now = Date.now();
+
+          if (
+            e.target === flutterContainer ||
+            flutterContainer?.contains(e.target)
+          ) {
+            return;
+          }
+
+          if (now - lastScrollTime < 8) {
+            return;
+          }
+
+          lastScrollTime = now;
+
+          if (isFlutterReady && flutterContainer) {
+            forwardScrollToFlutter(e.deltaY);
+          }
+        }
+
+        // Add scroll listeners only for desktop (wheel events)
+        document.addEventListener("wheel", handleScroll, { passive: true });
+        window.addEventListener("wheel", handleScroll, { passive: true });
+
+        // Less frequent re-checking
+        setInterval(() => {
+          if (!isFlutterReady) {
+            checkFlutterReady();
+          }
+        }, 5000);
+      });
+    </script>
+    <script>
+      (function () {
+        const isMobile = () => {
+          const hasTouch =
+            "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+          const mobileUA =
+            /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile|tablet|kindle|silk|playbook/i.test(
+              navigator.userAgent || ""
+            );
+
+          const isIPad =
+            (navigator.userAgent.includes("Mac") && hasTouch) ||
+            /ipad/i.test(navigator.userAgent);
+
+          const isSmallScreen =
+            window.innerWidth <= 768 || window.innerHeight <= 768;
+
+          const hasCoarsePointer =
+            window.matchMedia("(pointer: coarse)").matches;
+
+          const cannotHover = window.matchMedia("(hover: none)").matches;
+
+          const hasOrientationAPI =
+            "orientation" in window || "onorientationchange" in window;
+
+          const mobilePlatform = /android|iphone|ipad|ipod/i.test(
+            navigator.platform || ""
+          );
+
+          const multiTouch = navigator.maxTouchPoints > 1;
+
+          const isMobileVendor =
+            /apple|google|samsung/i.test(navigator.vendor || "") && hasTouch;
+
+          return (
+            mobileUA ||
+            isIPad ||
+            hasCoarsePointer ||
+            cannotHover ||
+            mobilePlatform ||
+            (hasTouch && isSmallScreen) ||
+            (hasTouch && hasOrientationAPI) ||
+            (multiTouch && isSmallScreen) ||
+            isMobileVendor
+          );
+        };
+
+        if (isMobile()) {
+          return;
+        }
+
+        function emitOutsideFlutterTap(event) {
+          const flutterContainer =
+            document.querySelector("#flutter_container") ||
+            document.querySelector("flt-glass-pane");
+          if (!flutterContainer) {
+            return;
+          }
+          if (flutterContainer.contains(event.target)) {
+            return;
+          }
+          
+          
+          const target = event.target;
+          const tagName = target.tagName?.toLowerCase();
+          const isInteractiveElement = 
+            tagName === 'input' ||
+            tagName === 'textarea' ||
+            tagName === 'button' ||
+            tagName === 'select' ||
+            tagName === 'a' ||
+            target.isContentEditable ||
+            target.closest('input, textarea, button, select, a, [contenteditable="true"]');
+          
+          if (isInteractiveElement) {
+            return;
+          }
+          
+          window.dispatchEvent(new CustomEvent("flutter-outside-tap"));
+        }
+
+        document.addEventListener("mousedown", emitOutsideFlutterTap);
+      })();
+    </script>
+  </body>
+</html>

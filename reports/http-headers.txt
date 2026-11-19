@@ -1,0 +1,19 @@
+HTTP/2 200 
+date: Thu, 19 Nov 2026 06:53:45 GMT
+content-type: text/html; charset=utf-8
+content-length: 58719
+cache-control: max-age=3600
+etag: "ab1677735dfb5410a35a30e05b2ef80130f7ac6ce35cd61b281b61d02ec12721"
+last-modified: Wed, 18 Nov 2026 14:36:34 GMT
+strict-transport-security: max-age=31556926; includeSubDomains; preload
+x-served-by: cache-hyd1500020-HYD
+x-cache: CONFIG_NOCACHE
+x-cache-hits: 232
+x-timer: S1795071226.686655,VS0,VE0
+vary: x-fh-requested-host, accept-encoding
+alt-svc: h3=":443";ma=86400,h3-29=":443";ma=86400,h3-27=":443";ma=86400
+access-control-expose-headers: *
+set-cookie: knot_rollout_id=33bb6135c99560633093c138c5808aab; Path=/; Max-Age=15552000; Secure; HttpOnly; SameSite=Lax
+x-azure-ref: 20261119T065345Z-15d9f96974ffr6vnhC1SG18sw8000000034g000000008wvs
+accept-ranges: bytes
+

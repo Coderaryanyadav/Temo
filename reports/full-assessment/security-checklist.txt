@@ -1,0 +1,34 @@
+KNOT SECURITY REVIEW
+
+AUTHENTICATION
+[ ] API rejects unauthenticated requests to private endpoints.
+[ ] Expired sessions are rejected.
+[ ] Logout invalidates the session.
+[ ] Refresh-token handling is secure.
+
+AUTHORIZATION / BOLA / IDOR
+[ ] Order IDs are checked against authenticated account ownership.
+[ ] Address IDs are checked against authenticated account ownership.
+[ ] Profile data is restricted to the authenticated account.
+[ ] Gift-card wallet data is restricted to the authenticated account.
+[ ] Refund details are restricted to the order owner.
+[ ] Bank account information is restricted to the account owner.
+
+FINANCIAL SECURITY
+[ ] Wallet balance is calculated server-side.
+[ ] Gift-card balance cannot be changed by client-side values.
+[ ] Refund ownership and eligibility are checked server-side.
+[ ] Payment amount is validated server-side.
+[ ] Bank-account ownership is verified server-side.
+
+SESSION / DATA SECURITY
+[ ] Tokens are not exposed in logs.
+[ ] Sensitive API responses are not publicly cached.
+[ ] Sensitive responses have suitable Cache-Control headers.
+[ ] CORS policy is restrictive.
+[ ] No personal information is exposed in public API responses.
+
+IMPORTANT:
+A checkbox is not a finding until tested and evidenced.
+Cross-account checks require two authorized test accounts.
+Do not test real customer IDs or modify production financial data.

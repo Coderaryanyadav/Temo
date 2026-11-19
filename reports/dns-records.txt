@@ -1,0 +1,17 @@
+A records:
+150.171.110.100
+
+AAAA records:
+
+Nameservers:
+ns4-09.azure-dns.info.
+ns1-09.azure-dns.com.
+ns2-09.azure-dns.net.
+ns3-09.azure-dns.org.
+
+MX records:
+10 alt4.aspmx.l.google.com.
+5 alt1.aspmx.l.google.com.
+5 alt2.aspmx.l.google.com.
+1 aspmx.l.google.com.
+10 alt3.aspmx.l.google.com.

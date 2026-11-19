@@ -1,0 +1,6 @@
+strict-transport-security: max-age=31556926; includeSubDomains; preload
+content-security-policy: Not observed
+x-content-type-options: Not observed
+x-frame-options: Not observed
+referrer-policy: Not observed
+permissions-policy: Not observed

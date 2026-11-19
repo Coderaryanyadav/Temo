@@ -1,0 +1,12 @@
+HTTP/2 200 
+date: Thu, 19 Nov 2026 06:57:16 GMT
+content-type: application/json
+content-length: 378
+server_timestamp: 2026-11-19T06:57:16.574797
+access-control-expose-headers: *
+x-azure-ref: 20261119T065716Z-16546478547prrh8hC1HYDdsmw00000001t000000000k8tk
+x-cache: TCP_MISS
+cache-control: public, max-age=1
+x-fd-int-roxy-purgeid: 0
+accept-ranges: bytes
+
