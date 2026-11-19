@@ -1,0 +1,24 @@
+{
+  "project": "KNOT",
+  "target": "https://knotnow.co",
+  "platform": "macOS Apple Silicon",
+  "assessment": "black-box",
+  "backend": "unknown",
+  "database": "unknown",
+  "hosting": "unknown",
+  "access": "website-login-and-admin",
+  "checks": {
+    "http_headers": true,
+    "dns": true,
+    "tls": true,
+    "robots": true,
+    "sitemap": true,
+    "api_inventory": true,
+    "authentication_review": true,
+    "sql_injection": "staging-only",
+    "xss": "staging-only",
+    "idor": "controlled-test-accounts-only",
+    "destructive_tests": false,
+    "dos": false
+  }
+}

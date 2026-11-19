@@ -1,0 +1,30 @@
+KNOT SECURITY ASSESSMENT
+
+Authorized target:
+https://knotnow.co
+
+Assessment mode:
+Black-box assessment.
+
+Available access:
+Website login and administrator access.
+
+Initial testing:
+- Passive reconnaissance
+- HTTP headers
+- DNS records
+- TLS certificate inspection
+- Public robots.txt and sitemap.xml
+- Browser request inventory
+- API documentation review
+- Authentication workflow review
+
+Active testing:
+Only on a controlled staging environment or isolated lab.
+
+Prohibited:
+- Denial of service
+- Brute force
+- Data extraction
+- Destructive database operations
+- Testing third-party infrastructure without authorization

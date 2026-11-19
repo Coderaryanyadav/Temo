@@ -1,0 +1,13 @@
+.DS_Store
+.env
+*.har
+*.session
+*.cookie
+*.pem
+*.key
+*.p12
+*.pwd
+reports/*
+evidence/*
+requests/*
+logs/*
