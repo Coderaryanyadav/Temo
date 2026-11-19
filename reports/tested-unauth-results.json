@@ -1,0 +1,152 @@
+[
+  {
+    "method": "GET",
+    "url": "https://sapi.knotnow.co/orders/active",
+    "status": 429,
+    "headers": {
+      "Date": "Thu, 19 Nov 2026 07:28:20 GMT",
+      "Content-Type": "text/html",
+      "Content-Length": "1484",
+      "Connection": "close",
+      "Cache-Control": "no-store",
+      "x-azure-ref": "20261119T072820Z-16546478547xpn4mhC1HYD9s5800000001wg00000000x7we",
+      "X-Cache": "CONFIG_NOCACHE"
+    },
+    "body": "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>\n<html xmlns='http://www.w3.org/1999/xhtml'>\n\n<head>\n    <meta content='text/html; charset=utf-8' http-equiv='content-type' />\n    <style type='text/css'>\n        body {\n         "
+  },
+  {
+    "method": "GET",
+    "url": "https://sapi.knotnow.co/orders/all",
+    "status": 429,
+    "headers": {
+      "Date": "Thu, 19 Nov 2026 07:28:21 GMT",
+      "Content-Type": "text/html",
+      "Content-Length": "1484",
+      "Connection": "close",
+      "Cache-Control": "no-store",
+      "x-azure-ref": "20261119T072821Z-16546478547tc5vvhC1HYD19bs00000001tg00000000d1nb",
+      "X-Cache": "CONFIG_NOCACHE"
+    },
+    "body": "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>\n<html xmlns='http://www.w3.org/1999/xhtml'>\n\n<head>\n    <meta content='text/html; charset=utf-8' http-equiv='content-type' />\n    <style type='text/css'>\n        body {\n         "
+  },
+  {
+    "method": "GET",
+    "url": "https://sapi.knotnow.co/orders/order/1",
+    "status": 429,
+    "headers": {
+      "Date": "Thu, 19 Nov 2026 07:28:21 GMT",
+      "Content-Type": "text/html",
+      "Content-Length": "1484",
+      "Connection": "close",
+      "Cache-Control": "no-store",
+      "x-azure-ref": "20261119T072821Z-16546478547jnv6shC1HYDmd3800000001tg000000009tpd",
+      "X-Cache": "CONFIG_NOCACHE"
+    },
+    "body": "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>\n<html xmlns='http://www.w3.org/1999/xhtml'>\n\n<head>\n    <meta content='text/html; charset=utf-8' http-equiv='content-type' />\n    <style type='text/css'>\n        body {\n         "
+  },
+  {
+    "method": "GET",
+    "url": "https://sapi.knotnow.co/user/profile/",
+    "status": 429,
+    "headers": {
+      "Date": "Thu, 19 Nov 2026 07:28:21 GMT",
+      "Content-Type": "text/html",
+      "Content-Length": "1484",
+      "Connection": "close",
+      "Cache-Control": "no-store",
+      "x-azure-ref": "20261119T072821Z-16546478547t5nt4hC1HYD7ycc00000001q00000000073tg",
+      "X-Cache": "CONFIG_NOCACHE"
+    },
+    "body": "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>\n<html xmlns='http://www.w3.org/1999/xhtml'>\n\n<head>\n    <meta content='text/html; charset=utf-8' http-equiv='content-type' />\n    <style type='text/css'>\n        body {\n         "
+  },
+  {
+    "method": "GET",
+    "url": "https://sapi.knotnow.co/user_address/loc_page_data",
+    "status": 429,
+    "headers": {
+      "Date": "Thu, 19 Nov 2026 07:28:21 GMT",
+      "Content-Type": "text/html",
+      "Content-Length": "1484",
+      "Connection": "close",
+      "Cache-Control": "no-store",
+      "x-azure-ref": "20261119T072821Z-16546478547tnmwghC1HYDtwv800000001sg000000008mms",
+      "X-Cache": "CONFIG_NOCACHE"
+    },
+    "body": "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>\n<html xmlns='http://www.w3.org/1999/xhtml'>\n\n<head>\n    <meta content='text/html; charset=utf-8' http-equiv='content-type' />\n    <style type='text/css'>\n        body {\n         "
+  },
+  {
+    "method": "GET",
+    "url": "https://sapi.knotnow.co/gift-cards/wallet",
+    "status": 429,
+    "headers": {
+      "Date": "Thu, 19 Nov 2026 07:28:21 GMT",
+      "Content-Type": "text/html",
+      "Content-Length": "1484",
+      "Connection": "close",
+      "Cache-Control": "no-store",
+      "x-azure-ref": "20261119T072821Z-16546478547z7kclhC1HYDh0y000000001p000000000rxwg",
+      "X-Cache": "CONFIG_NOCACHE"
+    },
+    "body": "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>\n<html xmlns='http://www.w3.org/1999/xhtml'>\n\n<head>\n    <meta content='text/html; charset=utf-8' http-equiv='content-type' />\n    <style type='text/css'>\n        body {\n         "
+  },
+  {
+    "method": "GET",
+    "url": "https://sapi.knotnow.co/user/manage_acc",
+    "status": 429,
+    "headers": {
+      "Date": "Thu, 19 Nov 2026 07:28:21 GMT",
+      "Content-Type": "text/html",
+      "Content-Length": "1484",
+      "Connection": "close",
+      "Cache-Control": "no-store",
+      "x-azure-ref": "20261119T072821Z-16546478547prrh8hC1HYDdsmw00000002600000000035rn",
+      "X-Cache": "CONFIG_NOCACHE"
+    },
+    "body": "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>\n<html xmlns='http://www.w3.org/1999/xhtml'>\n\n<head>\n    <meta content='text/html; charset=utf-8' http-equiv='content-type' />\n    <style type='text/css'>\n        body {\n         "
+  },
+  {
+    "method": "POST",
+    "url": "https://sapi.knotnow.co/orders/order_updt",
+    "status": 429,
+    "headers": {
+      "Date": "Thu, 19 Nov 2026 07:28:21 GMT",
+      "Content-Type": "text/html",
+      "Content-Length": "1484",
+      "Connection": "close",
+      "Cache-Control": "no-store",
+      "x-azure-ref": "20261119T072821Z-16546478547jnv6shC1HYDmd3800000001tg000000009tqb",
+      "X-Cache": "CONFIG_NOCACHE"
+    },
+    "body": "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>\n<html xmlns='http://www.w3.org/1999/xhtml'>\n\n<head>\n    <meta content='text/html; charset=utf-8' http-equiv='content-type' />\n    <style type='text/css'>\n        body {\n         "
+  },
+  {
+    "method": "POST",
+    "url": "https://sapi.knotnow.co/user_address/",
+    "status": 429,
+    "headers": {
+      "Date": "Thu, 19 Nov 2026 07:28:21 GMT",
+      "Content-Type": "text/html",
+      "Content-Length": "1484",
+      "Connection": "close",
+      "Cache-Control": "no-store",
+      "x-azure-ref": "20261119T072821Z-16546478547zmngghC1HYD9ufc00000001mg00000000455h",
+      "X-Cache": "CONFIG_NOCACHE"
+    },
+    "body": "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>\n<html xmlns='http://www.w3.org/1999/xhtml'>\n\n<head>\n    <meta content='text/html; charset=utf-8' http-equiv='content-type' />\n    <style type='text/css'>\n        body {\n         "
+  },
+  {
+    "method": "POST",
+    "url": "https://sapi.knotnow.co/cancel_order",
+    "status": 429,
+    "headers": {
+      "Date": "Thu, 19 Nov 2026 07:28:21 GMT",
+      "Content-Type": "text/html",
+      "Content-Length": "1484",
+      "Connection": "close",
+      "Cache-Control": "no-store",
+      "x-azure-ref": "20261119T072821Z-16546478547tk8slhC1HYDmut800000001c000000000qpvy",
+      "X-Cache": "CONFIG_NOCACHE"
+    },
+    "body": "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>\n<html xmlns='http://www.w3.org/1999/xhtml'>\n\n<head>\n    <meta content='text/html; charset=utf-8' http-equiv='content-type' />\n    <style type='text/css'>\n        body {\n         "
+  }
+]
